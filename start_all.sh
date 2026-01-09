@@ -20,22 +20,19 @@ echo "日志目录: $LOG_DIR"
 echo ""
 
 # 启动一个终端窗口，包含三个标签页
-gnome-terminal \
-  --title="Livox Driver" -- bash -c "
+gnome-terminal --tab --title="Livox Driver" -- bash -c "
     cd '$SCRIPT_DIR/livox_ws' && source install/setup.bash
     ros2 launch livox_ros_driver2 msg_MID360_launch.py 2>&1 | tee '$LOG_DIR/livox_driver.log'
     read
-  " \
-  --tab --title="RealSense Camera" -- bash -c "
+" --tab --title="RealSense Camera" -- bash -c "
     cd '$SCRIPT_DIR' && source /opt/ros/humble/setup.bash
     ros2 launch realsense2_camera rs_launch.py rgb_camera.profile:=640x480x30 align_depth.enable:=false 2>&1 | tee '$LOG_DIR/realsense.log'
     read
-  " \
-  --tab --title="FAST-LIVO" -- bash -c "
+" --tab --title="FAST-LIVO" -- bash -c "
     cd '$SCRIPT_DIR' && source /opt/ros/humble/setup.bash && source '$SCRIPT_DIR/livox_ws/install/setup.bash' && source '$SCRIPT_DIR/fastlivo2_ws/install/setup.bash'
     ros2 launch fast_livo mapping_mid360.launch.py 2>&1 | tee '$LOG_DIR/fastlivo.log'
     read
-  "
+"
 
 echo ""
 echo "=========================================="
