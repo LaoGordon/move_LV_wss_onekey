@@ -383,12 +383,11 @@ main() {
     SUCCESS_COUNT=0
     FAILED_COUNT=0
     SKIPPED_COUNT=0
-    TOTAL_WORKSPACES=3
+    TOTAL_WORKSPACES=2
     
-    # 编译三个工作空间（注意顺序：先编译依赖，再编译依赖它的包）
+    # 编译工作空间（注意顺序：先编译依赖，再编译依赖它的包）
     WORKSPACES=(
         "livox_ws:livox_ws"
-        "sync_livox_ws:sync_livox_ws"
         "fastlivo2_ws:fastlivo2_ws"
     )
     
