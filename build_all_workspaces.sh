@@ -74,6 +74,8 @@ check_ros2_dependencies() {
         "tf2-ros"
         "tf2-geometry-msgs"
         "xacro"
+        "realsense2-camera"
+        "realsense2-msgs"
     )
     
     for pkg in "${packages[@]}"; do
